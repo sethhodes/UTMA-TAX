@@ -3,290 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UTMA/UGMA Tax Optimization Manager</title>
+    <title>UTMA/UGMA Tax Optimization System - 2025</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="header__content">
-                <h1 class="header__title">UTMA/UGMA Tax Optimization Manager</h1>
-                <div class="header__year">2025 Tax Year</div>
+        <div class="container flex justify-between items-center py-16">
+            <div>
+                <h1 class="header__title">UTMA/UGMA Tax Optimization System - 2025</h1>
+                <p class="header__subtitle">Current Date: Monday, June 23, 2025 | Tax Year: 2025</p>
             </div>
         </div>
+        
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="container">
+                <div class="nav__tabs flex gap-8">
+                    <button class="nav__tab nav__tab--active" data-tab="dashboard">Dashboard</button>
+                    <button class="nav__tab" data-tab="account-review">Account Review</button>
+                    <button class="nav__tab" data-tab="workflow-tracker">Workflow Tracker</button>
+                    <button class="nav__tab" data-tab="reports">Reports</button>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <div class="nav__tabs">
-                <button class="nav__tab nav__tab--active" data-tab="dashboard">Dashboard</button>
-                <button class="nav__tab" data-tab="analysis">Account Analysis</button>
-                <button class="nav__tab" data-tab="calculator">Kiddie Tax Calculator</button>
-                <button class="nav__tab" data-tab="workflow">Workflow Tracker</button>
-                <button class="nav__tab" data-tab="reports">Reports</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
     <main class="main">
         <div class="container">
-            <!-- Dashboard Tab -->
-            <section id="dashboard" class="tab-content tab-content--active">
+            <!-- Dashboard View -->
+            <div id="dashboard" class="view view--active">
                 <div class="dashboard">
-                    <h2 class="section-title">Portfolio Overview</h2>
-                    
-                    <!-- KPI Cards -->
-                    <div class="kpi-grid">
-                        <div class="card kpi-card">
-                            <div class="card__body">
-                                <div class="kpi-card__value" id="total-accounts">3</div>
-                                <div class="kpi-card__label">Total Accounts</div>
-                            </div>
-                        </div>
-                        <div class="card kpi-card">
-                            <div class="card__body">
-                                <div class="kpi-card__value" id="total-assets">$460,000</div>
-                                <div class="kpi-card__label">Assets Under Management</div>
-                            </div>
-                        </div>
-                        <div class="card kpi-card">
-                            <div class="card__body">
-                                <div class="kpi-card__value" id="optimized-accounts">1</div>
-                                <div class="kpi-card__label">Optimized Accounts</div>
-                            </div>
-                        </div>
-                        <div class="card kpi-card">
-                            <div class="card__body">
-                                <div class="kpi-card__value" id="potential-savings">$2,340</div>
-                                <div class="kpi-card__label">Potential Tax Savings</div>
-                            </div>
+                    <div class="dashboard__header mb-8">
+                        <h2>Portfolio Overview</h2>
+                        <div class="dashboard__actions flex gap-8">
+                            <button class="btn btn--primary" onclick="showAddAccountModal()">Add Account</button>
+                            <button class="btn btn--secondary" onclick="startReview()">Start Review</button>
                         </div>
                     </div>
 
-                    <!-- Accounts Table -->
-                    <div class="card accounts-table">
-                        <div class="card__header">
-                            <h3>Account Summary</h3>
+                    <!-- Summary Cards -->
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="summary-card__value" id="total-accounts">5</div>
+                            <div class="summary-card__label">Total UTMA/UGMA Accounts</div>
                         </div>
-                        <div class="card__body">
-                            <div class="table-container">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Account ID</th>
-                                            <th>Client Name</th>
-                                            <th>Account Value</th>
-                                            <th>Current Income</th>
-                                            <th>Child Age</th>
-                                            <th>Status</th>
-                                            <th>Last Rebalance</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="accounts-tbody">
-                                        <!-- Will be populated by JavaScript -->
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="summary-card summary-card--warning">
+                            <div class="summary-card__value" id="over-threshold">2</div>
+                            <div class="summary-card__label">Accounts Over $2,700 Threshold</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-card__value" id="pending-reviews">5</div>
+                            <div class="summary-card__label">Pending Reviews</div>
+                        </div>
+                        <div class="summary-card summary-card--success">
+                            <div class="summary-card__value" id="total-unrealized">$56.5K</div>
+                            <div class="summary-card__label">Total Unrealized Gains</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="charts-section">
+                        <div class="chart-container">
+                            <h3>Tax Budget Analysis</h3>
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/0c682b714e97830f08c63ce49fd509f0/43b71eac-19b1-4e38-82ca-525c08a5dfd0/b266820c.csv" alt="Tax Budget Chart" class="dashboard-chart">
+                        </div>
+                        <div class="chart-container">
+                            <h3>Strategy Distribution</h3>
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1750708788/pplx_code_interpreter/56e6c735_uxqekd.jpg" alt="Tax Strategy Pie Chart" class="dashboard-chart">
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Account Analysis Tab -->
-            <section id="analysis" class="tab-content">
-                <div class="analysis">
-                    <h2 class="section-title">Account Analysis</h2>
-                    
-                    <div class="analysis-grid">
-                        <!-- Input Form -->
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Account Details</h3>
-                            </div>
-                            <div class="card__body">
-                                <form id="analysis-form" class="form">
-                                    <div class="form-group">
-                                        <label class="form-label" for="account-value">Account Value ($)</label>
-                                        <input type="number" id="account-value" class="form-control" placeholder="125000">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="current-income">Current Annual Income ($)</label>
-                                        <input type="number" id="current-income" class="form-control" placeholder="3200">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="child-age">Child's Age</label>
-                                        <input type="number" id="child-age" class="form-control" min="0" max="18" placeholder="16">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="parent-bracket">Parent's Tax Bracket (%)</label>
-                                        <select id="parent-bracket" class="form-control">
-                                            <option value="10">10%</option>
-                                            <option value="12">12%</option>
-                                            <option value="22">22%</option>
-                                            <option value="24" selected>24%</option>
-                                            <option value="32">32%</option>
-                                            <option value="35">35%</option>
-                                            <option value="37">37%</option>
-                                        </select>
-                                    </div>
-                                    <button type="button" id="analyze-btn" class="btn btn--primary btn--full-width">Analyze Account</button>
-                                </form>
-                            </div>
+            <!-- Account Review View -->
+            <div id="account-review" class="view">
+                <div class="account-review">
+                    <div class="account-review__header mb-8">
+                        <h2>Account Review</h2>
+                        <div class="account-review__filters flex gap-8">
+                            <select class="form-control" id="advisor-filter">
+                                <option value="">All Advisors</option>
+                                <option value="Advisor A">Advisor A</option>
+                                <option value="Advisor B">Advisor B</option>
+                                <option value="Advisor C">Advisor C</option>
+                            </select>
+                            <select class="form-control" id="priority-filter">
+                                <option value="">All Priorities</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                            <select class="form-control" id="strategy-filter">
+                                <option value="">All Strategies</option>
+                                <option value="Gain Harvesting">Gain Harvesting</option>
+                                <option value="Loss Harvesting">Loss Harvesting</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <!-- Results -->
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Tax Analysis Results</h3>
-                            </div>
-                            <div class="card__body">
-                                <div id="analysis-results" class="analysis-results">
-                                    <p class="text-secondary">Enter account details and click "Analyze Account" to see recommendations.</p>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Account Table -->
+                    <div class="table-container">
+                        <table class="accounts-table">
+                            <thead>
+                                <tr>
+                                    <th>Account ID</th>
+                                    <th>Minor Name</th>
+                                    <th>Custodian</th>
+                                    <th>Advisor</th>
+                                    <th>Current Value</th>
+                                    <th>YTD Realized</th>
+                                    <th>YTD Unrealized</th>
+                                    <th>Total Income</th>
+                                    <th>Tax Budget</th>
+                                    <th>Strategy</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accounts-table-body">
+                                <!-- Account rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Kiddie Tax Calculator Tab -->
-            <section id="calculator" class="tab-content">
-                <div class="calculator">
-                    <h2 class="section-title">Kiddie Tax Calculator</h2>
-                    
-                    <div class="calculator-grid">
-                        <!-- Calculator Input -->
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Income Calculator</h3>
-                            </div>
-                            <div class="card__body">
-                                <div class="form-group">
-                                    <label class="form-label" for="unearned-income">Unearned Income ($)</label>
-                                    <input type="number" id="unearned-income" class="form-control" placeholder="5000" min="0">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="parent-rate">Parent's Tax Rate (%)</label>
-                                    <select id="parent-rate" class="form-control">
-                                        <option value="24" selected>24%</option>
-                                        <option value="32">32%</option>
-                                        <option value="35">35%</option>
-                                        <option value="37">37%</option>
-                                    </select>
-                                </div>
-                                <button type="button" id="calculate-btn" class="btn btn--primary btn--full-width">Calculate Tax</button>
-                            </div>
-                        </div>
-
-                        <!-- Tax Breakdown -->
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Tax Breakdown</h3>
-                            </div>
-                            <div class="card__body">
-                                <div id="tax-breakdown" class="tax-breakdown">
-                                    <div class="tax-tier">
-                                        <div class="tax-tier__label">Tax-Free Amount</div>
-                                        <div class="tax-tier__amount">$0 - $1,350</div>
-                                        <div class="tax-tier__rate">0%</div>
-                                    </div>
-                                    <div class="tax-tier">
-                                        <div class="tax-tier__label">Child's Rate</div>
-                                        <div class="tax-tier__amount">$1,351 - $2,700</div>
-                                        <div class="tax-tier__rate">10%</div>
-                                    </div>
-                                    <div class="tax-tier">
-                                        <div class="tax-tier__label">Parent's Rate</div>
-                                        <div class="tax-tier__amount">Above $2,700</div>
-                                        <div class="tax-tier__rate" id="parent-rate-display">24%</div>
-                                    </div>
-                                </div>
-                                <div class="tax-summary" id="tax-summary">
-                                    <div class="tax-summary__item">
-                                        <span>Total Tax Owed:</span>
-                                        <span id="total-tax">$0</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Visual Chart -->
-                    <div class="card chart-card">
-                        <div class="card__header">
-                            <h3>2025 Kiddie Tax Structure</h3>
-                        </div>
-                        <div class="card__body">
-                            <img src="https://pplx-res.cloudinary.com/image/upload/v1750706878/pplx_code_interpreter/e2b3769e_ikgeif.jpg" alt="Tax Impact Comparison: Kiddie Tax vs. Child's Rate Only (2025)" class="chart-image">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Workflow Tracker Tab -->
-            <section id="workflow" class="tab-content">
-                <div class="workflow">
-                    <h2 class="section-title">2025 Annual Workflow Tracker</h2>
-                    
+            <!-- Workflow Tracker View -->
+            <div id="workflow-tracker" class="view">
+                <div class="workflow-tracker">
+                    <h2>2025 Tax Optimization Workflow</h2>
                     <div class="workflow-phases" id="workflow-phases">
-                        <!-- Will be populated by JavaScript -->
+                        <!-- Workflow phases will be populated by JavaScript -->
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Reports Tab -->
-            <section id="reports" class="tab-content">
+            <!-- Reports View -->
+            <div id="reports" class="view">
                 <div class="reports">
-                    <h2 class="section-title">Reports & Documentation</h2>
-                    
+                    <h2>Tax Optimization Reports</h2>
                     <div class="reports-grid">
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Client Communication</h3>
-                            </div>
-                            <div class="card__body">
-                                <p>Generate client-facing reports and communication materials.</p>
-                                <button class="btn btn--primary">Generate Client Report</button>
-                            </div>
+                        <div class="report-card">
+                            <h3>Threshold Exceedance Report</h3>
+                            <p>Accounts exceeding $2,700 kiddie tax threshold</p>
+                            <button class="btn btn--outline" onclick="generateThresholdReport()">Generate Report</button>
                         </div>
-                        
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Tax Optimization Summary</h3>
-                            </div>
-                            <div class="card__body">
-                                <p>Detailed analysis of tax optimization strategies and outcomes.</p>
-                                <button class="btn btn--primary">Generate Summary</button>
-                            </div>
+                        <div class="report-card">
+                            <h3>Unrealized Gains Summary</h3>
+                            <p>Portfolio-wide unrealized gains analysis</p>
+                            <button class="btn btn--outline" onclick="generateGainsReport()">Generate Report</button>
                         </div>
-                        
-                        <div class="card">
-                            <div class="card__header">
-                                <h3>Compliance Documentation</h3>
-                            </div>
-                            <div class="card__body">
-                                <p>Regulatory compliance reports and audit trail documentation.</p>
-                                <button class="btn btn--primary">Generate Compliance Report</button>
-                            </div>
+                        <div class="report-card">
+                            <h3>Implementation Status</h3>
+                            <p>Progress tracking by advisor and account</p>
+                            <button class="btn btn--outline" onclick="generateStatusReport()">Generate Report</button>
                         </div>
-                        
+                        <div class="report-card">
+                            <h3>Compliance Documentation</h3>
+                            <p>Audit trail and documentation tracker</p>
+                            <button class="btn btn--outline" onclick="generateComplianceReport()">Generate Report</button>
+                        </div>
+                    </div>
+
+                    <!-- Report Output -->
+                    <div id="report-output" class="report-output" style="display: none;">
                         <div class="card">
-                            <div class="card__header">
-                                <h3>Performance Reports</h3>
-                            </div>
                             <div class="card__body">
-                                <p>Portfolio performance and tax efficiency metrics.</p>
-                                <button class="btn btn--primary">Generate Performance Report</button>
+                                <h3 id="report-title"></h3>
+                                <div id="report-content"></div>
+                                <div class="mt-8">
+                                    <button class="btn btn--secondary" onclick="exportReport()">Export CSV</button>
+                                    <button class="btn btn--outline" onclick="closeReport()">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     </main>
+
+    <!-- Account Detail Modal -->
+    <div id="account-modal" class="modal">
+        <div class="modal__backdrop" onclick="closeAccountModal()"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2 id="modal-title">Account Details</h2>
+                <button class="modal__close" onclick="closeAccountModal()">&times;</button>
+            </div>
+            <div class="modal__body">
+                <form id="account-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Account ID</label>
+                            <input type="text" class="form-control" id="form-account-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Minor Age</label>
+                            <input type="number" class="form-control" id="form-minor-age" min="0" max="18">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Minor Name</label>
+                            <input type="text" class="form-control" id="form-minor-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Custodian</label>
+                            <input type="text" class="form-control" id="form-custodian" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Advisor</label>
+                            <select class="form-control" id="form-advisor" required>
+                                <option value="">Select Advisor</option>
+                                <option value="Advisor A">Advisor A</option>
+                                <option value="Advisor B">Advisor B</option>
+                                <option value="Advisor C">Advisor C</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Current Value ($)</label>
+                            <input type="number" class="form-control" id="form-current-value" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">YTD Realized Gains ($)</label>
+                            <input type="number" class="form-control" id="form-realized-gains" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">YTD Unrealized Gains ($)</label>
+                            <input type="number" class="form-control" id="form-unrealized-gains" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">YTD Income ($)</label>
+                            <input type="number" class="form-control" id="form-ytd-income" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Expected Distributions ($)</label>
+                            <input type="number" class="form-control" id="form-expected-distributions" step="0.01">
+                        </div>
+                    </div>
+                    
+                    <!-- Tax Analysis Section -->
+                    <div class="tax-analysis">
+                        <h3>Tax Analysis</h3>
+                        <div class="tax-summary">
+                            <div class="tax-item">
+                                <span class="tax-label">Total Unearned Income:</span>
+                                <span class="tax-value" id="total-unearned-income">$0</span>
+                            </div>
+                            <div class="tax-item">
+                                <span class="tax-label">Remaining Tax Budget:</span>
+                                <span class="tax-value" id="remaining-tax-budget">$0</span>
+                            </div>
+                            <div class="tax-item">
+                                <span class="tax-label">Recommended Strategy:</span>
+                                <span class="tax-value" id="recommended-strategy">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" id="form-notes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button type="button" class="btn btn--outline" onclick="closeAccountModal()">Cancel</button>
+                <button type="button" class="btn btn--primary" onclick="saveAccount()">Save Account</button>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>

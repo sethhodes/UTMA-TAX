@@ -1,0 +1,6 @@
+Account_ID,Account_Owner_Minor,Custodian_Parent,Advisor,Minor_Age,Account_Value_Current,YTD_Realized_Gains,YTD_Unrealized_Gains,YTD_Income_Distributions,Total_YTD_Unearned_Income,Remaining_Tax_Budget_2025,High_Embedded_Gains_Flag,Expected_Capital_Gains_Distributions,Tax_Strategy_Recommended,Review_Date,Strategy_Implemented,Notes,Parent_Tax_Bracket_Impact,Priority_Level
+UTMA001,John Smith Jr.,John Smith Sr.,Advisor A,12,125000,2100,15000,1800,3900,-1200,Yes,1500,Loss Harvesting,2025-01-15,Pending,Exceeded threshold - need loss harvesting,High Risk,High
+UTMA002,Sarah Johnson,Mary Johnson,Advisor B,15,89000,850,8500,1200,2050,650,Yes,800,Gain Harvesting,2025-01-20,Pending,Good candidate for gain harvesting,Optimal,Medium
+UTMA003,Michael Davis,Lisa Davis,Advisor A,8,45000,200,4200,600,800,1900,No,300,Gain Harvesting,2025-01-18,Pending,Low income - maximize gains,Optimal,Low
+UTMA004,Emma Wilson,Tom Wilson,Advisor C,17,180000,3500,22000,2800,6300,-3600,Yes,2200,Loss Harvesting,2025-01-12,Pending,Way over threshold - urgent action needed,High Risk,High
+UTMA005,David Brown,Jennifer Brown,Advisor B,10,67000,1200,6800,950,2150,550,Yes,600,Gain Harvesting,2025-01-25,Pending,Perfect for gain realization,Optimal,Medium

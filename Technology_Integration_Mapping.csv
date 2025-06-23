@@ -1,0 +1,9 @@
+System/Tool,Primary_Function,UTMA_UGMA_Specific_Use,Integration_Priority
+Portfolio Management System,"Track unrealized gains, performance analysis","Monitor embedded gains by position, calculate tax budgets",Critical
+Custodian Platforms,"Account data, distribution notices, trade execution","Pull account values, distribution projections, execute tax trades",Critical
+Wealthbox CRM,"Client communication, task tracking, opportunity management","Log review dates, track strategy implementation, client notes",High
+Google Drive,"Document storage, analysis archival, compliance records","Store annual analysis, maintain compliance documentation",High
+Tax Loss Harvesting Software,"Automated loss harvesting, wash sale avoidance",Automate tax optimization within kiddie tax limits,Medium
+Performance Reporting,"Client reporting, tax impact analysis","Show after-tax performance, tax efficiency metrics",High
+Trading Platform,"Trade execution, settlement confirmation",Execute gain/loss harvesting trades with tax lot specificity,Critical
+Compliance System,"Audit trail, regulatory documentation","Document fiduciary decisions, maintain audit trail",Critical
