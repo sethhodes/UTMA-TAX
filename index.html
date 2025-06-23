@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTMA/UGMA Tax Optimization Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__title">UTMA/UGMA Tax Optimization Manager</h1>
+                <div class="header__year">2025 Tax Year</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav__tabs">
+                <button class="nav__tab nav__tab--active" data-tab="dashboard">Dashboard</button>
+                <button class="nav__tab" data-tab="analysis">Account Analysis</button>
+                <button class="nav__tab" data-tab="calculator">Kiddie Tax Calculator</button>
+                <button class="nav__tab" data-tab="workflow">Workflow Tracker</button>
+                <button class="nav__tab" data-tab="reports">Reports</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content tab-content--active">
+                <div class="dashboard">
+                    <h2 class="section-title">Portfolio Overview</h2>
+                    
+                    <!-- KPI Cards -->
+                    <div class="kpi-grid">
+                        <div class="card kpi-card">
+                            <div class="card__body">
+                                <div class="kpi-card__value" id="total-accounts">3</div>
+                                <div class="kpi-card__label">Total Accounts</div>
+                            </div>
+                        </div>
+                        <div class="card kpi-card">
+                            <div class="card__body">
+                                <div class="kpi-card__value" id="total-assets">$460,000</div>
+                                <div class="kpi-card__label">Assets Under Management</div>
+                            </div>
+                        </div>
+                        <div class="card kpi-card">
+                            <div class="card__body">
+                                <div class="kpi-card__value" id="optimized-accounts">1</div>
+                                <div class="kpi-card__label">Optimized Accounts</div>
+                            </div>
+                        </div>
+                        <div class="card kpi-card">
+                            <div class="card__body">
+                                <div class="kpi-card__value" id="potential-savings">$2,340</div>
+                                <div class="kpi-card__label">Potential Tax Savings</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accounts Table -->
+                    <div class="card accounts-table">
+                        <div class="card__header">
+                            <h3>Account Summary</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Account ID</th>
+                                            <th>Client Name</th>
+                                            <th>Account Value</th>
+                                            <th>Current Income</th>
+                                            <th>Child Age</th>
+                                            <th>Status</th>
+                                            <th>Last Rebalance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="accounts-tbody">
+                                        <!-- Will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Analysis Tab -->
+            <section id="analysis" class="tab-content">
+                <div class="analysis">
+                    <h2 class="section-title">Account Analysis</h2>
+                    
+                    <div class="analysis-grid">
+                        <!-- Input Form -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Account Details</h3>
+                            </div>
+                            <div class="card__body">
+                                <form id="analysis-form" class="form">
+                                    <div class="form-group">
+                                        <label class="form-label" for="account-value">Account Value ($)</label>
+                                        <input type="number" id="account-value" class="form-control" placeholder="125000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="current-income">Current Annual Income ($)</label>
+                                        <input type="number" id="current-income" class="form-control" placeholder="3200">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="child-age">Child's Age</label>
+                                        <input type="number" id="child-age" class="form-control" min="0" max="18" placeholder="16">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="parent-bracket">Parent's Tax Bracket (%)</label>
+                                        <select id="parent-bracket" class="form-control">
+                                            <option value="10">10%</option>
+                                            <option value="12">12%</option>
+                                            <option value="22">22%</option>
+                                            <option value="24" selected>24%</option>
+                                            <option value="32">32%</option>
+                                            <option value="35">35%</option>
+                                            <option value="37">37%</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" id="analyze-btn" class="btn btn--primary btn--full-width">Analyze Account</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Tax Analysis Results</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="analysis-results" class="analysis-results">
+                                    <p class="text-secondary">Enter account details and click "Analyze Account" to see recommendations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kiddie Tax Calculator Tab -->
+            <section id="calculator" class="tab-content">
+                <div class="calculator">
+                    <h2 class="section-title">Kiddie Tax Calculator</h2>
+                    
+                    <div class="calculator-grid">
+                        <!-- Calculator Input -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Income Calculator</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="form-group">
+                                    <label class="form-label" for="unearned-income">Unearned Income ($)</label>
+                                    <input type="number" id="unearned-income" class="form-control" placeholder="5000" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="parent-rate">Parent's Tax Rate (%)</label>
+                                    <select id="parent-rate" class="form-control">
+                                        <option value="24" selected>24%</option>
+                                        <option value="32">32%</option>
+                                        <option value="35">35%</option>
+                                        <option value="37">37%</option>
+                                    </select>
+                                </div>
+                                <button type="button" id="calculate-btn" class="btn btn--primary btn--full-width">Calculate Tax</button>
+                            </div>
+                        </div>
+
+                        <!-- Tax Breakdown -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Tax Breakdown</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="tax-breakdown" class="tax-breakdown">
+                                    <div class="tax-tier">
+                                        <div class="tax-tier__label">Tax-Free Amount</div>
+                                        <div class="tax-tier__amount">$0 - $1,350</div>
+                                        <div class="tax-tier__rate">0%</div>
+                                    </div>
+                                    <div class="tax-tier">
+                                        <div class="tax-tier__label">Child's Rate</div>
+                                        <div class="tax-tier__amount">$1,351 - $2,700</div>
+                                        <div class="tax-tier__rate">10%</div>
+                                    </div>
+                                    <div class="tax-tier">
+                                        <div class="tax-tier__label">Parent's Rate</div>
+                                        <div class="tax-tier__amount">Above $2,700</div>
+                                        <div class="tax-tier__rate" id="parent-rate-display">24%</div>
+                                    </div>
+                                </div>
+                                <div class="tax-summary" id="tax-summary">
+                                    <div class="tax-summary__item">
+                                        <span>Total Tax Owed:</span>
+                                        <span id="total-tax">$0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Chart -->
+                    <div class="card chart-card">
+                        <div class="card__header">
+                            <h3>2025 Kiddie Tax Structure</h3>
+                        </div>
+                        <div class="card__body">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1750706878/pplx_code_interpreter/e2b3769e_ikgeif.jpg" alt="Tax Impact Comparison: Kiddie Tax vs. Child's Rate Only (2025)" class="chart-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Workflow Tracker Tab -->
+            <section id="workflow" class="tab-content">
+                <div class="workflow">
+                    <h2 class="section-title">2025 Annual Workflow Tracker</h2>
+                    
+                    <div class="workflow-phases" id="workflow-phases">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Tab -->
+            <section id="reports" class="tab-content">
+                <div class="reports">
+                    <h2 class="section-title">Reports & Documentation</h2>
+                    
+                    <div class="reports-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Client Communication</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Generate client-facing reports and communication materials.</p>
+                                <button class="btn btn--primary">Generate Client Report</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Tax Optimization Summary</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Detailed analysis of tax optimization strategies and outcomes.</p>
+                                <button class="btn btn--primary">Generate Summary</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Compliance Documentation</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Regulatory compliance reports and audit trail documentation.</p>
+                                <button class="btn btn--primary">Generate Compliance Report</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Performance Reports</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Portfolio performance and tax efficiency metrics.</p>
+                                <button class="btn btn--primary">Generate Performance Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
